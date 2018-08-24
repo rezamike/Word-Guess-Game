@@ -39,15 +39,18 @@ document.onkeyup = function (event) {
             display[i] = guess;
         }
     }
+    
+    console.log(guess);
 
     if (display.indexOf("_") === -1) {
-        round++;
-        display = replaceWord();
-        letters.pickWord();
+        alert("you won!");
+    //     round++;
+    //     display = replaceWord();
+    //     pickWord();
     }
     
-    else {
-        guessLeft--;
-        alert("Game The Fuck Over, Dawg!");
-    }
+    // else {
+    //     guessLeft--;
+    //     alert("Game The Fuck Over, Dawg!");
+    // }
 }
