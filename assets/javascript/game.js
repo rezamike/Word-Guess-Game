@@ -1,35 +1,53 @@
-var food = ["sushi", "pizza"];
-var index = [];
-var guessLeft = 10;
-var guesses = [];
-var correct = [];
-var empty = [];
+var food = ["superpoop", "pizza"];
+var guessLeft = 9;
+var round = 0;
+var letters = [];
 
 
-for (var i = 0; i < food[0].length; i++) {
-    index.push(food[0].charAt(i));
+for (var i = 0; i < food[round].length; i++) {
+    letters.push(food[round].charAt(i));
 }
 
-for (var i = 0; i < index.length; i++) {
-    empty.push("_");
+function replaceWord() {
+    var slots = [];
+
+    for (var j = 0; j < letters.length; j++) {
+        slots.push("_");
+    }
+    return slots;
 }
 
-document.getElementById("wordness").textContent = empty.join(" ");
+function pickWord() {
+    letters = [];
+    if (round < food.length) {
+        for (var i = 0; i < food[round].length; i++) {
+            letters.push(food[round].charAt(i));
+        }
+    }
+}
+
+var display = replaceWord();
+
+console.log(display);
 
 document.onkeyup = function (event) {
-    var balls = event.key.toLowerCase();
+    var guess = event.key.toLowerCase();
 
-    if (index.indexOf(balls) >= 0) {
-        correct.push(balls);
+    for (i = 0; i < letters.length; i++) {
+
+        if (guess === letters[i]) {
+            display[i] = guess;
+        }
     }
 
+    if (display.indexOf("_") === -1) {
+        round++;
+        display = replaceWord();
+        letters.pickWord();
+    }
+    
     else {
         guessLeft--;
-        guesses.push(balls);
-        console.log(guesses, guessLeft)
-    }
-
-    if (guesses.length === index.length) {
-        console.log("You won!");
+        alert("Game The Fuck Over, Dawg!");
     }
 }
