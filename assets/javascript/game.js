@@ -28,8 +28,6 @@ function pickWord() {
 
 var display = replaceWord();
 
-console.log(display);
-
 document.onkeyup = function (event) {
     var guess = event.key.toLowerCase();
 
@@ -39,18 +37,18 @@ document.onkeyup = function (event) {
             display[i] = guess;
         }
     }
-    
-    console.log(guess);
 
     if (display.indexOf("_") === -1) {
         alert("you won!");
-    //     round++;
-    //     display = replaceWord();
-    //     pickWord();
+        round++;
+        display = replaceWord();
+        pickWord();
     }
-    
+
     // else {
     //     guessLeft--;
     //     alert("Game The Fuck Over, Dawg!");
     // }
 }
+
+document.getElementById("col2").textContent = display;
