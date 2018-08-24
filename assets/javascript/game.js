@@ -45,6 +45,9 @@ document.onkeyup = function (event) {
         pickWord();
     }
 
+    console.log(guess);
+    console.log(display);
+
     // else {
     //     guessLeft--;
     //     alert("Game The Fuck Over, Dawg!");
